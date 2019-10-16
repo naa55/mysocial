@@ -1,7 +1,7 @@
 {
   "name": "devapp",
   "version": "1.0.0",
-  "description": "social nextowrk for doctors and patient",
+  "description": "social network for doctors and patient",
   "main": "server.js",
   "scripts": {
     "start": "node server",

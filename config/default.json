@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://naa55:naa55@cluster0-ilslm.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken"
+}
