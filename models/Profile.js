@@ -5,13 +5,9 @@ const Schema = mongoose.Schema;
 const ProfileSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
-    ref: "users"
+    ref: "user"
   },
-  handle: {
-    type: String,
-    required: true,
-    max: 40
-  },
+
   company: {
     type: String
   },
@@ -62,36 +58,7 @@ const ProfileSchema = new Schema({
       }
     }
   ],
-  education: [
-    {
-      school: {
-        type: String,
-        required: true
-      },
-      degree: {
-        type: String,
-        required: true
-      },
-      fieldofstudy: {
-        type: String,
-        required: true
-      },
-      from: {
-        type: Date,
-        required: true
-      },
-      to: {
-        type: Date
-      },
-      current: {
-        type: Boolean,
-        default: false
-      },
-      description: {
-        type: String
-      }
-    }
-  ],
+
   social: {
     youtube: {
       type: String
