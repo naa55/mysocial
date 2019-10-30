@@ -9,6 +9,8 @@ const Profile = require("../../models/Profile");
 
 const User = require("../../models/User");
 
+const Post = require("../../models/Post");
+
 //@route GET api/profile/profile/me
 
 //@desc Get current users profile
@@ -83,19 +85,17 @@ router.post(
     if (bio) profileFields.bio = bio;
     if (status) profileFields.status = status;
     if (skills) {
-      console.log(123);
       profileFields.skills = skills.split(",").map(skill => skill.trim());
     }
 
     //build socail array
 
     profileFields.social = {};
-
-    if (youtube) profileFields.social = youtube;
-    if (twitter) profileFields.social = twitter;
-    if (facebook) profileFields.social = facebook;
-    if (linkedin) profileFields.social = linkedin;
-    if (instagram) profileFields.social = instagram;
+    if (youtube) profileFields.social.youtube = youtube;
+    if (twitter) profileFields.social.twitter = twitter;
+    if (facebook) profileFields.social.facebook = facebook;
+    if (linkedin) profileFields.social.linkedin = linkedin;
+    if (instagram) profileFields.social.instagram = instagram;
 
     try {
       let profile = await Profile.findOne({ user: req.user.id });
@@ -126,7 +126,7 @@ router.post(
 
 //@access Public
 
-router.get("/", async (req, res) => {
+router.get("/s", async (req, res) => {
   try {
     const profiles = await Profile.find().populate("user", ["name", "avatar"]);
     res.json(profiles);
@@ -169,6 +169,7 @@ router.get("/user/:user_id", async (req, res) => {
 router.delete("/", auth, async (req, res) => {
   try {
     // remove user post
+    await Post.deleteMany({ user: req.user.id });
 
     //Remove profile
     await Profile.findOneAndRemove({ user: req.user.id });

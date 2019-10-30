@@ -399,3 +399,119 @@ router.post(
     };
   }
 );
+
+
+router.put("/like/:id", auth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    //check if the post has already been liked
+
+    if (
+      post.likes.filter(like => like.user.toString() === req.user.id).length > 0
+    ) {
+      return res.json(400).json({ msg: "Post already liked" });
+    }
+
+    post.likes.unshift({ user: req.user.id });
+
+    await post.save();
+
+    res.json(post.likes);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+
+
+
+
+
+
+
+
+import uuid from "uuid";
+import { SET_ALERT, REMOVE_ALERT } from "./types";
+
+export const setAlert = (msg, alertType) => dispatch => {
+  const id = uuid.v4();
+  dispatch({
+    type: SET_ALERT,
+    payload: { msg, alertType, id }
+  });
+};
+
+
+//////////////export const SET_ALERT = "SET_ALERT";
+export const REMOVE_ALERT = "REMOVE_ALERT";
+
+///////////////////////
+import { SET_ALERT, REMOVE_ALERT } from "../actions/types";
+
+const intialState = [];
+
+export default function(state = intialState, action) {
+  const { type, payload } = action;
+
+  switch (type) {
+    case SET_ALERT:
+      return [...state, payload];
+    case REMOVE_ALERT:
+      return state.filter(alert => alert.id !== payload);
+    default:
+      return state;
+  }
+}
+///////////////
+import { combineReducers } from "redux";
+import alert from "./alert";
+
+export default combineReducers({
+  alert
+})
+
+//////////////////;
+
+
+import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
+import rootReducer from "./reducers";
+
+const intialState = {};
+
+const middleware = [thunk];
+
+const store = createStore(
+  rootReducer,
+  intialState,
+  composeWithDevTools(applyMiddleware(...middleware))
+);
+
+export default store;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////
+
+    if (youtube) profileFields.social.youtube = youtube;
+    if (twitter) profileFields.social.twitter = twitter;
+    if (facebook) profileFields.social.facebook = facebook;
+    if (linkedin) profileFields.social.linkedin = linkedin;
+    if (instagram) profileFields.social.instagram = instagram;
+
