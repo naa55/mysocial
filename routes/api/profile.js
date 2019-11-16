@@ -109,7 +109,7 @@ router.post(
         return res.json(profile);
       }
 
-      // Craete
+      // Create new profile
       profile = new Profile(profileFields);
       await profile.save();
       res.json(profile);

@@ -16,10 +16,13 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
         <Spinner />
       ) : (
         <Fragment>
-          <h1 className="large text-primary">Developers</h1>
+          <h1
+            className="large text-primary"
+            style={{ color: "rgb(125, 243, 125)" }}>
+            Health Coaches
+          </h1>
           <p className="lead">
-            <i className="fab fa-connectdevelop" /> Browse and connect with
-            developers
+            <i className="fab fa-connectdevelop" /> Browse and connect for help
           </p>
           <div className="profiles">
             {profiles.length > 0 ? (
@@ -45,7 +48,4 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default connect(
-  mapStateToProps,
-  { getProfiles }
-)(Profiles);
+export default connect(mapStateToProps, { getProfiles })(Profiles);

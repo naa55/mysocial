@@ -7,7 +7,6 @@ import { addExperience } from "../../actions/profile";
 const AddExperience = ({ addExperience, history }) => {
   const [formData, setFormData] = useState({
     company: "",
-    title: "",
     location: "",
     from: "",
     to: "",
@@ -26,8 +25,7 @@ const AddExperience = ({ addExperience, history }) => {
     <Fragment>
       <h1 className="large text-primary">Add An Experience</h1>
       <p className="lead">
-        <i className="fas fa-code-branch" /> Add any developer/programming
-        positions that you have had in the past
+        <i className="fas fa-code-branch" /> Add any Job Experience
       </p>
       <small>* = required field</small>
       <form
@@ -104,7 +102,7 @@ const AddExperience = ({ addExperience, history }) => {
             name="description"
             cols="30"
             rows="5"
-            placeholder="Job Description"
+            placeholder="Job/Educational Description"
             value={description}
             onChange={e => onChange(e)}
           />

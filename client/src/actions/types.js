@@ -27,3 +27,21 @@ export const DELETE_ACCOUNT = "DELETE_ACCOUNT";
 
 //get all profiles
 export const GET_PROFILES = "GET_PROFILES";
+
+//get all post
+export const GET_POSTS = "GET_POSTS";
+export const POST_ERROR = "POST_ERROR";
+
+//update like
+export const UPDATE_LIKES = "UPDATE_LIKES";
+export const DELETE_POST = " DELETE_POST";
+
+//add post
+export const ADD_POST = "ADD_POST";
+
+//get post
+export const GET_POST = "GET_POST";
+
+// add and remove comment
+export const ADD_COMMENT = "ADD_COMMENT";
+export const DELETE_COMMENT = " DELETE_COMMENT";

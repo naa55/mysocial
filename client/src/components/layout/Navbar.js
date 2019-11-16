@@ -12,12 +12,16 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </li>
 
       <li>
-        <Link to="/create-profile">Doctors/health practitioner</Link>
+        <Link to="/posts">Posts</Link>
       </li>
 
       <li>
-        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/create-profile">Health practitioner</Link>
       </li>
+
+      {/* <li>
+        <Link to="/dashboard">Dashboard</Link>
+      </li> */}
       <li>
         <a onClick={logout} href="#!">
           Logout

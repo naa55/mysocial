@@ -43,6 +43,7 @@ router.post(
 
     try {
       let user = await User.findOne({ email });
+      // See if user exit
 
       if (user) {
         return res
@@ -58,6 +59,7 @@ router.post(
         d: "mm"
       });
 
+      //creating a new user
       user = new User({
         name,
         email,

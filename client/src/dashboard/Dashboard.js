@@ -22,7 +22,7 @@ const Dashboard = ({
     <Spinner />
   ) : (
     <Fragment>
-      <h1 className="large text-primary">Dashboard</h1>
+      <h1 className="b-text">Dashboard</h1>
       <p className="lead">
         <i className="fas fa-user"></i> Welcome {user && user.name}
         <br />
@@ -41,15 +41,21 @@ const Dashboard = ({
           </Fragment>
         ) : (
           <Fragment>
-            <p style={{ fontSize: "16px" }}>Add a Profile</p>
+            {/* <p style={{ fontSize: "16px" }}>Add a Profile</p>
             <Link to="/create-profile" className="btn btn-primary my-1">
               Create Profile
-            </Link>
+            </Link> */}
             <p style={{ fontSize: "16px" }}>Move Straight to post</p>
 
-            <Link to="/create-profile" className="btn btn-primary my-1">
+            <Link to="/posts" className="btn btn-primary my-1">
               Add Post
             </Link>
+
+            {/* ask whether normal  users should also be able to delete thier account  */}
+
+            {/* <button className="btn btn-danger" onClick={() => deleteAccount()}>
+              Delete My Account
+            </button> */}
           </Fragment>
         )}
       </p>
@@ -69,7 +75,6 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default connect(
-  mapStateToProps,
-  { getCurrentProfile, deleteAccount }
-)(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
+  Dashboard
+);
